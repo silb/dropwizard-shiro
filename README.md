@@ -43,7 +43,7 @@ shiro:
   iniConfigs: ["classpath:shiro.ini"]
 ```
 
-Now create and [configure](http://github.com/silb/shiro-jaxrs#configure-shiro) `shiro.ini` in the default package
+Now create and [configure](http://github.com/silb/shiro-jersey#configure-shiro) `shiro.ini` in the default package
 on the classpath.
 
 ## Optionally enable the exception mapper
