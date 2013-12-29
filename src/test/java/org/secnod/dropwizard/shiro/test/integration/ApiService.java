@@ -13,7 +13,7 @@ import com.yammer.dropwizard.config.Bootstrap;
 import com.yammer.dropwizard.config.Environment;
 
 /**
- * An example DropWizard service.
+ * An example Dropwizard service.
  */
 public class ApiService extends Service<ApiConfiguration> {
 

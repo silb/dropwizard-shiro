@@ -17,7 +17,7 @@ import com.yammer.dropwizard.config.Bootstrap;
 import com.yammer.dropwizard.config.Environment;
 
 /**
- * A DropWizard bundle for Apache Shiro.
+ * A Dropwizard bundle for Apache Shiro.
  */
 public abstract class ShiroBundle<T> implements ConfiguredBundle<T> {
 

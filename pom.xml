@@ -6,7 +6,7 @@
   <groupId>org.secnod.dropwizard</groupId>
   <artifactId>dropwizard-shiro</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <description>A DropWizard bundle for Apache Shiro.</description>
+  <description>A Dropwizard bundle for Apache Shiro.</description>
 
   <licenses>
     <license>

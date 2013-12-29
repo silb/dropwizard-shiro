@@ -1,10 +1,10 @@
-A bundle for securing DropWizard with Apache Shiro.
+A bundle for securing Dropwizard with Apache Shiro.
 
 # Adding the dropwizard-shiro dependency
 
 1. Clone this repository.
 2. Run `mvn clean install`
-3. Add the following dependencies to an existing DropWizard project:
+3. Add the following dependencies to an existing Dropwizard project:
 
 ```xml
 <dependency>
@@ -16,7 +16,7 @@ A bundle for securing DropWizard with Apache Shiro.
 
 # Adding and configuring the Shiro bundle
 
-Add the bundle to the DropWizard environment:
+Add the bundle to the Dropwizard environment:
 
 ```java
 public class ApiService extends Service<ApiConfiguration> {
@@ -36,7 +36,7 @@ public class ApiService extends Service<ApiConfiguration> {
 }
 ```
 
-Edit the DropWizard YAML config file:
+Edit the Dropwizard YAML config file:
 
 ```yaml
 shiro:
@@ -65,7 +65,7 @@ It is not added by default as most applications will need to customize how Shiro
 ## Optionally using a custom user class
 
 The `InjectableProvider` for a [custom user class](http://github.com/silb/shiro-jersey#custom-user) must be added to
-DropWizard:
+Dropwizard:
 
 ```java
 public class ApiService extends Service<ApiConfiguration> {
