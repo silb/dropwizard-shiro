@@ -60,7 +60,7 @@ public class ApiService extends Service<ApiConfiguration> {
 }
 ```
 
-It is not added by default as most applications will need to customize how Shiro exception are mapped to HTTP responses.
+It is not added by default as most applications will need to customize how Shiro exceptions are mapped to HTTP responses.
 
 ## Optionally using a custom user class
 
