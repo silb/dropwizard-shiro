@@ -1,0 +1,7 @@
+http:
+  rootPath: /api/*
+logging:
+  level: INFO
+
+shiro:
+  iniConfigs: ["classpath:org/secnod/shiro/test/integration/webapp/WEB-INF/shiro.ini"]
