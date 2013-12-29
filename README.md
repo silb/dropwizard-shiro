@@ -1,4 +1,4 @@
-A bundle for securing Dropwizard with Apache Shiro.
+A bundle for securing [Dropwizard](http://dropwizard.codahale.com) with [Apache Shiro](http://shiro.apache.org).
 
 # Adding the dropwizard-shiro dependency
 
