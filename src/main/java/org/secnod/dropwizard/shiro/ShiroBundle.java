@@ -1,14 +1,18 @@
 package org.secnod.dropwizard.shiro;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.Filter;
 
+import org.apache.shiro.realm.Realm;
+import org.apache.shiro.web.env.IniWebEnvironment;
+import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.apache.shiro.web.mgt.WebSecurityManager;
+import org.apache.shiro.web.servlet.AbstractShiroFilter;
 import org.secnod.shiro.jersey.ShiroResourceFilterFactory;
 import org.secnod.shiro.jersey.SubjectInjectableProvider;
-
-import org.apache.shiro.web.env.IniWebEnvironment;
-import org.apache.shiro.web.servlet.AbstractShiroFilter;
 
 import com.sun.jersey.api.core.ResourceConfig;
 import com.sun.jersey.spi.container.ResourceFilterFactory;
@@ -37,7 +41,7 @@ public abstract class ShiroBundle<T> implements ConfiguredBundle<T> {
 
         environment.addProvider(new SubjectInjectableProvider());
 
-        Filter shiroFilter = buildShiroFilter(configuration);
+        Filter shiroFilter = createFilter(configuration);
         environment.addFilter(shiroFilter, shiroConfig.getFilterUrlPattern()).setName("ShiroFilter");
     }
 
@@ -46,10 +50,11 @@ public abstract class ShiroBundle<T> implements ConfiguredBundle<T> {
      */
     protected abstract ShiroConfiguration narrow(T configuration);
 
+
     /**
-     * Build the Shiro filter. Overriding this method allows for complete customization of how Shiro is initialized.
+     * Create the Shiro filter. Overriding this method allows for complete customization of how Shiro is initialized.
      */
-    protected Filter buildShiroFilter(T configuration) {
+    protected Filter createFilter(final T configuration) {
         ShiroConfiguration shiroConfig = narrow(configuration);
         final IniWebEnvironment shiroEnv = new IniWebEnvironment();
         shiroEnv.setConfigLocations(shiroConfig.getIniConfigs());
@@ -58,10 +63,25 @@ public abstract class ShiroBundle<T> implements ConfiguredBundle<T> {
         AbstractShiroFilter shiroFilter = new AbstractShiroFilter() {
             @Override
             public void init() throws Exception {
-                setSecurityManager(shiroEnv.getWebSecurityManager());
+                Collection<Realm> realms = createRealms(configuration);
+                WebSecurityManager securityManager = realms.isEmpty()
+                        ? shiroEnv.getWebSecurityManager()
+                        : new DefaultWebSecurityManager(realms);
+                setSecurityManager(securityManager);
                 setFilterChainResolver(shiroEnv.getFilterChainResolver());
             }
         };
         return shiroFilter;
+    }
+
+    /**
+     * Create and configure the Shiro realms. Override this method in order to
+     * add realms that require configuration.
+     *
+     * @return a non-null list of realms. If empty, no realms will be added, but depending on the content of the INI
+     *         file Shiro might still add its automatic IniRealm.
+     */
+    protected Collection<Realm> createRealms(T configuration) {
+        return Collections.emptyList();
     }
 }
