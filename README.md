@@ -100,23 +100,25 @@ Override `ShiroBundle.createRealms(T)`.
 
 ### One of my realms has a dependency to an object that is constructed in Service.run(T, Environment). How do I pass it to the realm?
 
+Store the object in a field in the service class:
+
 ```java
 public class ApiService extends Service<ApiConfiguration> {
 
-    Supplier<MyObject> myObjectSupplier;
+    MyObject myObject;
 
     private final ShiroBundle<ApiConfiguration> shiro = new ShiroBundle<ApiConfiguration>() {
 
         @Override
         protected Collection<Realm> createRealms(ApiConfiguration configuration) {
-            Realm r = new SomeRealm(myObjectSupplier.get());
+            Realm r = new SomeRealm(myObject);
             return Collections.singleton(r);
         }
     };
 
     @Override
     public void run(ApiConfiguration configuration, Environment environment) throws Exception {
-        myObjectSupplier = Suppliers.ofInstance(new MyObject(configuration);
+        myObject = new MyObject(configuration);
     }
 }
 ```
