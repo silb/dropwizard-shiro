@@ -2,9 +2,10 @@ A bundle for securing [Dropwizard](http://dropwizard.codahale.com) with [Apache 
 
 # Adding the dropwizard-shiro dependency
 
-1. Clone this repository.
-2. Run `mvn clean install`
-3. Add the following dependencies to an existing Dropwizard project:
+1. Clone http://github.com/silb/shiro-jersey and run `mvn clean install`
+2. Clone this repository.
+3. Run `mvn clean install`
+4. Add the following dependencies to an existing Dropwizard project:
 
 ```xml
 <dependency>
