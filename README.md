@@ -20,7 +20,7 @@ A bundle for securing [Dropwizard](http://dropwizard.codahale.com) with [Apache 
 Add the bundle to the Dropwizard environment:
 
 ```java
-public class ApiService extends Service<ApiConfiguration> {
+public class ApiApplication extends Application<ApiConfiguration> {
 
     private final ShiroBundle<ApiConfiguration> shiro = new ShiroBundle<ApiConfiguration>() {
 
@@ -52,11 +52,11 @@ on the classpath.
 Shiro exceptions can be mapped to HTTP responses by adding the exception mapper for Shiro exceptions.
 
 ```java
-public class ApiService extends Service<ApiConfiguration> {
+public class ApiApplication extends Application<ApiConfiguration> {
 
     @Override
     public void run(ApiConfiguration configuration, Environment environment) throws Exception {
-        environment.addProvider(new ShiroExceptionMapper());
+        environment.jersey().register(new ShiroExceptionMapper());
     }
 }
 ```
@@ -69,11 +69,11 @@ The `InjectableProvider` for a [custom user class](http://github.com/silb/shiro-
 Dropwizard:
 
 ```java
-public class ApiService extends Service<ApiConfiguration> {
+public class ApiApplication extends Application<ApiConfiguration> {
 
     @Override
     public void run(ApiConfiguration configuration, Environment environment) throws Exception {
-        environment.addProvider(new UserInjectableProvider());
+        environment.jersey().register(new UserInjectableProvider());
     }
 }
 ```
@@ -104,7 +104,7 @@ Override `ShiroBundle.createRealms(T)`.
 Store the object in a field in the service class:
 
 ```java
-public class ApiService extends Service<ApiConfiguration> {
+public class ApiApplication extends Application<ApiConfiguration> {
 
     MyObject myObject;
 
