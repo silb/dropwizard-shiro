@@ -1,5 +1,3 @@
-http:
-  rootPath: /api/*
 logging:
   level: INFO
 

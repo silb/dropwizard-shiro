@@ -22,9 +22,15 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.yammer.dropwizard</groupId>
+      <groupId>io.dropwizard</groupId>
       <artifactId>dropwizard-core</artifactId>
-      <version>0.6.2</version>
+      <version>${dropwizard.version}</version>
+    </dependency>
+    <dependency>
+      <!-- For using the Jersey version from Dropwizard instead of shiro-jersey -->
+      <groupId>io.dropwizard</groupId>
+      <artifactId>dropwizard-jersey</artifactId>
+      <version>${dropwizard.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.shiro</groupId>
@@ -48,6 +54,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <dropwizard.version>0.7.0</dropwizard.version>
   </properties>
 
   <build>
@@ -93,7 +100,7 @@
           <arguments>
             <argument>-classpath</argument>
             <classpath />
-            <argument>org.secnod.dropwizard.shiro.test.integration.ApiService</argument>
+            <argument>org.secnod.dropwizard.shiro.test.integration.ApiApplication</argument>
           </arguments>
         </configuration>
       </plugin>

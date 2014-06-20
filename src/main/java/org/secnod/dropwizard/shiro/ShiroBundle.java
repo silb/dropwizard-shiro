@@ -1,9 +1,15 @@
 package org.secnod.dropwizard.shiro;
 
+import io.dropwizard.ConfiguredBundle;
+import io.dropwizard.setup.Bootstrap;
+import io.dropwizard.setup.Environment;
+
 import java.util.Collection;
 import java.util.Collections;
+import java.util.EnumSet;
 import java.util.List;
 
+import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
 
 import org.apache.shiro.realm.Realm;
@@ -16,9 +22,6 @@ import org.secnod.shiro.jersey.SubjectInjectableProvider;
 
 import com.sun.jersey.api.core.ResourceConfig;
 import com.sun.jersey.spi.container.ResourceFilterFactory;
-import com.yammer.dropwizard.ConfiguredBundle;
-import com.yammer.dropwizard.config.Bootstrap;
-import com.yammer.dropwizard.config.Environment;
 
 /**
  * A Dropwizard bundle for Apache Shiro.
@@ -33,16 +36,18 @@ public abstract class ShiroBundle<T> implements ConfiguredBundle<T> {
     @Override
     public void run(T configuration, Environment environment) {
         ShiroConfiguration shiroConfig = narrow(configuration);
-        ResourceConfig resourceConfig = environment.getJerseyResourceConfig();
+        ResourceConfig resourceConfig = environment.jersey().getResourceConfig();
 
         @SuppressWarnings("unchecked")
         List<ResourceFilterFactory> resourceFilterFactories = resourceConfig.getResourceFilterFactories();
         resourceFilterFactories.add(new ShiroResourceFilterFactory());
 
-        environment.addProvider(new SubjectInjectableProvider());
+        environment.jersey().register(new SubjectInjectableProvider());
 
         Filter shiroFilter = createFilter(configuration);
-        environment.addFilter(shiroFilter, shiroConfig.getFilterUrlPattern()).setName("ShiroFilter");
+        environment.servlets()
+            .addFilter("ShiroFilter", shiroFilter)
+            .addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), false, shiroConfig.getFilterUrlPattern());
     }
 
     /**
