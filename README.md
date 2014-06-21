@@ -99,9 +99,10 @@ Override `ShiroBundle.createFilter(T)`.
 
 Override `ShiroBundle.createRealms(T)`.
 
-### One of my realms has a dependency to an object that is constructed in Service.run(T, Environment). How do I pass it to the realm?
+### One of my realms has a dependency to an object that is constructed in Application.run(T, Environment).
+### How do I pass it to the realm?
 
-Store the object in a field in the service class:
+Store the object in a field in the application class:
 
 ```java
 public class ApiApplication extends Application<ApiConfiguration> {
