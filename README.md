@@ -123,3 +123,13 @@ public class ApiApplication extends Application<ApiConfiguration> {
     }
 }
 ```
+
+### How do I enable sessions?
+
+Add a `SessionHandler` to Jetty:
+
+```java
+environment.getApplicationContext().setSessionHandler(new SessionHandler());
+```
+
+See the supplied [example application](src/test/java/org/secnod/dropwizard/shiro/test/integration/ApiApplication.java).
