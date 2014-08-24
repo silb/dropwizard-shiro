@@ -40,12 +40,12 @@
     <dependency>
       <groupId>org.secnod.shiro</groupId>
       <artifactId>shiro-jersey</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <version>${shiro-jersey.version}</version>
     </dependency>
     <dependency>
       <groupId>org.secnod.shiro</groupId>
       <artifactId>shiro-jersey</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <version>${shiro-jersey.version}</version>
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>
@@ -55,6 +55,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <dropwizard.version>0.7.0</dropwizard.version>
+    <shiro-jersey.version>0.1.0</shiro-jersey.version>
   </properties>
 
   <build>
