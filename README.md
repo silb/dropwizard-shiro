@@ -2,15 +2,13 @@ A bundle for securing [Dropwizard](http://dropwizard.codahale.com) with [Apache 
 
 # Adding the dropwizard-shiro dependency
 
-1. Clone this repository.
-2. Run `mvn clean install`
-3. Add the following dependency to an existing Dropwizard project:
+Add the following dependencies to `pom.xml` in an existing project already using Dropwizard:
 
 ```xml
 <dependency>
   <groupId>org.secnod.dropwizard</groupId>
   <artifactId>dropwizard-shiro</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.1.0</version>
 </dependency>
 ```
 
