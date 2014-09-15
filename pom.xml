@@ -4,7 +4,7 @@
 
   <groupId>org.secnod.dropwizard</groupId>
   <artifactId>dropwizard-shiro</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
+  <version>0.2.0-SNAPSHOT</version>
 
   <name>${project.groupId}:${project.artifactId}</name>
   <description>A Dropwizard bundle for Apache Shiro.</description>
@@ -29,7 +29,7 @@
   <scm>
     <connection>scm:git:https://github.com/silb/dropwizard-shiro.git</connection>
     <developerConnection>scm:git:git@github.com:silb/dropwizard-shiro.git</developerConnection>
-    <tag>release-0.1</tag>
+    <tag>HEAD</tag>
     <url>https://github.com/silb/dropwizard-shiro</url>
   </scm>
 
