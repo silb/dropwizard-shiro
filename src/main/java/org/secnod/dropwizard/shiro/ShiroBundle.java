@@ -47,7 +47,7 @@ public abstract class ShiroBundle<T> implements ConfiguredBundle<T> {
         Filter shiroFilter = createFilter(configuration);
         environment.servlets()
             .addFilter("ShiroFilter", shiroFilter)
-            .addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), false, shiroConfig.getFilterUrlPattern());
+            .addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), false, shiroConfig.filterUrlPattern());
     }
 
     /**
@@ -62,7 +62,7 @@ public abstract class ShiroBundle<T> implements ConfiguredBundle<T> {
     protected Filter createFilter(final T configuration) {
         ShiroConfiguration shiroConfig = narrow(configuration);
         final IniWebEnvironment shiroEnv = new IniWebEnvironment();
-        shiroEnv.setConfigLocations(shiroConfig.getIniConfigs());
+        shiroEnv.setConfigLocations(shiroConfig.iniConfigs());
         shiroEnv.init();
 
         AbstractShiroFilter shiroFilter = new AbstractShiroFilter() {
