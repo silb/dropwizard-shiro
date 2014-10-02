@@ -13,11 +13,11 @@ public class ShiroConfiguration {
     @JsonProperty("filterUrlPattern")
     private String filterUrlPattern = "/*";
 
-    public String[] getIniConfigs() {
+    public String[] iniConfigs() {
         return iniConfigs;
     }
 
-    public String getFilterUrlPattern() {
+    public String filterUrlPattern() {
         return filterUrlPattern;
     }
 }
