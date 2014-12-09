@@ -1,3 +1,6 @@
+server:
+  rootPath: /api/*
+
 logging:
   level: INFO
 

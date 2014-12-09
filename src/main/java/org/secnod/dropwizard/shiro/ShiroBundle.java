@@ -7,7 +7,6 @@ import io.dropwizard.setup.Environment;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.EnumSet;
-import java.util.List;
 
 import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
@@ -17,11 +16,10 @@ import org.apache.shiro.web.env.IniWebEnvironment;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.mgt.WebSecurityManager;
 import org.apache.shiro.web.servlet.AbstractShiroFilter;
-import org.secnod.shiro.jersey.ShiroResourceFilterFactory;
-import org.secnod.shiro.jersey.SubjectInjectableProvider;
-
-import com.sun.jersey.api.core.ResourceConfig;
-import com.sun.jersey.spi.container.ResourceFilterFactory;
+import org.glassfish.jersey.server.ResourceConfig;
+import org.secnod.shiro.jersey.AuthInjectionBinder;
+import org.secnod.shiro.jersey.AuthorizationFilterFeature;
+import org.secnod.shiro.jersey.SubjectFactory;
 
 /**
  * A Dropwizard bundle for Apache Shiro.
@@ -38,11 +36,9 @@ public abstract class ShiroBundle<T> implements ConfiguredBundle<T> {
         ShiroConfiguration shiroConfig = narrow(configuration);
         ResourceConfig resourceConfig = environment.jersey().getResourceConfig();
 
-        @SuppressWarnings("unchecked")
-        List<ResourceFilterFactory> resourceFilterFactories = resourceConfig.getResourceFilterFactories();
-        resourceFilterFactories.add(new ShiroResourceFilterFactory());
-
-        environment.jersey().register(new SubjectInjectableProvider());
+        resourceConfig.register(new AuthorizationFilterFeature());
+        resourceConfig.register(new SubjectFactory());
+        resourceConfig.register(new AuthInjectionBinder());
 
         Filter shiroFilter = createFilter(configuration);
         environment.servlets()
