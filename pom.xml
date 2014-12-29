@@ -83,7 +83,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <dropwizard.version>0.7.0</dropwizard.version>
+    <dropwizard.version>0.7.1</dropwizard.version>
     <shiro-jersey.version>0.1.0</shiro-jersey.version>
     <jdk.version>1.7</jdk.version>
   </properties>
@@ -209,7 +209,7 @@
               <links>
                 <link>https://jersey.java.net/apidocs/1.7/jersey/</link>
                 <link>http://shiro.apache.org/static/1.2.3/apidocs/</link>
-                <link>http://dropwizard.io/0.7.0/dropwizard-core/apidocs/</link>
+                <link>http://dropwizard.io/0.7.1/dropwizard-core/apidocs/</link>
               </links>
             </configuration>
             <executions>
