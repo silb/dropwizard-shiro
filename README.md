@@ -8,7 +8,7 @@ Add the following dependencies to `pom.xml` in an existing project already using
 <dependency>
   <groupId>org.secnod.dropwizard</groupId>
   <artifactId>dropwizard-shiro</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.1</version>
 </dependency>
 ```
 
