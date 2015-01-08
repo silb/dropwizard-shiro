@@ -24,7 +24,7 @@ public class ApiApplication extends Application<ApiConfiguration> {
         }
     };
 
-    ApiApplication() {}
+    public ApiApplication() {}
 
     @Override
     public void initialize(Bootstrap<ApiConfiguration> bootstrap) {
