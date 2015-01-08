@@ -62,15 +62,14 @@ It is not added by default as most applications will need to customize how Shiro
 
 ## Optionally using a custom user class
 
-The `InjectableProvider` for a [custom user class](http://github.com/silb/shiro-jersey#custom-user) must be added to
-Dropwizard:
+The `TypeFactory` for a [custom user class](http://github.com/silb/shiro-jersey#custom-user) must be added to Dropwizard:
 
 ```java
 public class ApiApplication extends Application<ApiConfiguration> {
 
     @Override
     public void run(ApiConfiguration configuration, Environment environment) throws Exception {
-        environment.jersey().register(new UserInjectableProvider());
+        environment.jersey().register(new UserFactory());
     }
 }
 ```
