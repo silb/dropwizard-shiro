@@ -111,10 +111,10 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <dropwizard.version>0.8.0-rc1</dropwizard.version>
+    <dropwizard.version>0.8.0-rc2</dropwizard.version>
     <shiro-jersey.version>0.2.0-SNAPSHOT</shiro-jersey.version>
     <jdk.version>1.7</jdk.version>
-    <jersey.version>2.13</jersey.version>
+    <jersey.version>2.15</jersey.version>
   </properties>
 
   <build>

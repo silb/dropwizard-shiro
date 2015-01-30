@@ -1,6 +1,6 @@
 package org.secnod.dropwizard.shiro.test.integration;
 
-import io.dropwizard.testing.junit.ConfigOverride;
+import io.dropwizard.testing.ConfigOverride;
 import io.dropwizard.testing.junit.DropwizardAppRule;
 
 import java.io.IOException;
