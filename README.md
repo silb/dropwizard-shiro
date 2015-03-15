@@ -12,6 +12,13 @@ Add the following dependencies to `pom.xml` in an existing project already using
 </dependency>
 ```
 
+Version compatibility:
+
+|Dropwizard|Dropwizard Shiro|
+|----------|----------------|
+|0.8.x     |0.2.0           |
+|0.7.x     |0.1.1           |
+
 # Adding and configuring the Shiro bundle
 
 Add the bundle to the Dropwizard environment:
