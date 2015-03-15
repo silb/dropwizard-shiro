@@ -266,9 +266,9 @@
             <version>2.8</version>
             <configuration>
               <links>
-                <link>https://jersey.java.net/apidocs/1.7/jersey/</link>
+                <link>https://jersey.java.net/apidocs/2.16/jersey/</link>
                 <link>http://shiro.apache.org/static/1.2.3/apidocs/</link>
-                <link>http://dropwizard.io/0.7.0/dropwizard-core/apidocs/</link>
+                <link>http://dropwizard.io/0.8.0/dropwizard-core/apidocs/</link>
               </links>
             </configuration>
             <executions>
