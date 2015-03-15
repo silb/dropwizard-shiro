@@ -91,14 +91,43 @@
       <type>test-jar</type>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>io.dropwizard</groupId>
+      <artifactId>dropwizard-testing</artifactId>
+      <version>${dropwizard.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.glassfish.jersey.core</groupId>
+      <artifactId>jersey-client</artifactId>
+      <version>${jersey.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jersey.connectors</groupId>
+      <artifactId>jersey-apache-connector</artifactId>
+      <version>${jersey.version}</version>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <dropwizard.version>0.7.1</dropwizard.version>
-    <shiro-jersey.version>0.1.0</shiro-jersey.version>
+    <dropwizard.version>0.8.0</dropwizard.version>
+    <shiro-jersey.version>0.2.0</shiro-jersey.version>
     <jdk.version>1.7</jdk.version>
+    <jersey.version>2.16</jersey.version>
   </properties>
 
   <build>
@@ -175,6 +204,17 @@
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.16</version>
+        <configuration>
+          <excludes>
+            <exclude>**/test/integration/**/*Test.java</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-eclipse-plugin</artifactId>
         <version>2.8</version>
         <configuration>
@@ -209,7 +249,26 @@
 
   <profiles>
 
-  <profile>
+    <profile>
+      <!-- Run the integration tests as part of the build. -->
+      <id>integration-tests</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.16</version>
+            <configuration>
+              <includes>
+                <include>**/test/integration/IntegrationTestSuite.java</include>
+              </includes>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
       <id>release</id>
       <build>
         <plugins>
@@ -220,9 +279,9 @@
             <version>2.8</version>
             <configuration>
               <links>
-                <link>https://jersey.java.net/apidocs/1.7/jersey/</link>
+                <link>https://jersey.java.net/apidocs/2.16/jersey/</link>
                 <link>http://shiro.apache.org/static/1.2.3/apidocs/</link>
-                <link>http://dropwizard.io/0.7.1/dropwizard-core/apidocs/</link>
+                <link>http://dropwizard.io/0.8.0/dropwizard-core/apidocs/</link>
               </links>
             </configuration>
             <executions>
@@ -250,6 +309,31 @@
             </executions>
           </plugin>
 
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <!-- Configure the Eclipse Infinitest plugin to ignore integration tests. -->
+      <id>infinitest</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-eclipse-plugin</artifactId>
+            <version>2.8</version>
+            <configuration>
+              <additionalConfig>
+                <file>
+                  <name>infinitest.filters</name>
+                  <content>
+                  <![CDATA[
+                  .*\.test\.integration\..*]]>
+                  </content>
+                </file>
+              </additionalConfig>
+            </configuration>
+          </plugin>
         </plugins>
       </build>
     </profile>

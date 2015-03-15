@@ -1,11 +1,11 @@
 package org.secnod.dropwizard.shiro.test.integration;
 
-import org.secnod.example.webapp.UserInjectableProvider;
 import org.secnod.shiro.jaxrs.ShiroExceptionMapper;
 import org.secnod.shiro.test.integration.webapp.IntegrationTestApplication;
 import org.eclipse.jetty.server.session.SessionHandler;
 import org.secnod.dropwizard.shiro.ShiroBundle;
 import org.secnod.dropwizard.shiro.ShiroConfiguration;
+import org.secnod.example.webapp.UserFactory;
 
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
@@ -24,7 +24,7 @@ public class ApiApplication extends Application<ApiConfiguration> {
         }
     };
 
-    ApiApplication() {}
+    public ApiApplication() {}
 
     @Override
     public void initialize(Bootstrap<ApiConfiguration> bootstrap) {
@@ -33,8 +33,7 @@ public class ApiApplication extends Application<ApiConfiguration> {
 
     @Override
     public void run(ApiConfiguration configuration, Environment environment) throws Exception {
-        environment.jersey().setUrlPattern("/api/*");
-        environment.jersey().register(new UserInjectableProvider());
+        environment.jersey().register(new UserFactory());
         environment.jersey().register(new ShiroExceptionMapper());
 
         environment.getApplicationContext().setSessionHandler(new SessionHandler());
