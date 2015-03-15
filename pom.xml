@@ -74,13 +74,13 @@
       <exclusions>
         <exclusion>
           <!-- Provided by Dropwizard -->
-          <groupId>com.sun.jersey</groupId>
-          <artifactId>jersey-core</artifactId>
+          <groupId>org.glassfish.jersey.core</groupId>
+          <artifactId>jersey-server</artifactId>
         </exclusion>
         <exclusion>
           <!-- Provided by Dropwizard -->
-          <groupId>com.sun.jersey</groupId>
-          <artifactId>jersey-servlet</artifactId>
+          <groupId>org.glassfish.jersey.containers</groupId>
+          <artifactId>jersey-container-servlet</artifactId>
         </exclusion>
       </exclusions>
     </dependency>
