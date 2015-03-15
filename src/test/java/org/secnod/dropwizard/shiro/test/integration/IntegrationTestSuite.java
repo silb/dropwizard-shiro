@@ -26,9 +26,19 @@ public class IntegrationTestSuite {
         }
     }
 
+    private static int findAdminPort() {
+        try {
+            return JettyServer.allocatePort();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     @ClassRule
     public static DropwizardAppRule<ApiConfiguration> app = new DropwizardAppRule<ApiConfiguration>(
             ApiApplication.class,
             "src/test/resources/api.yml",
-            ConfigOverride.config("server.applicationConnectors[0].port", Integer.toString(findPort())));
+            ConfigOverride.config("server.applicationConnectors[0].port", Integer.toString(findPort())),
+            ConfigOverride.config("server.adminConnectors[0].port", Integer.toString(findAdminPort())));
+
 }
