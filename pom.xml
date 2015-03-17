@@ -65,7 +65,7 @@
     <dependency>
       <groupId>org.apache.shiro</groupId>
       <artifactId>shiro-web</artifactId>
-      <version>1.2.3</version>
+      <version>${shiro.version}</version>
     </dependency>
     <dependency>
       <groupId>org.secnod.shiro</groupId>
@@ -125,12 +125,22 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <dropwizard.version>0.8.0</dropwizard.version>
+    <shiro.version>1.2.3</shiro.version>
     <shiro-jersey.version>0.2.0</shiro-jersey.version>
     <jdk.version>1.7</jdk.version>
     <jersey.version>2.16</jersey.version>
   </properties>
 
   <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>2.8</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -244,6 +254,18 @@
        </configuration>
      </plugin>
 
+     <plugin>
+       <groupId>org.apache.maven.plugins</groupId>
+       <artifactId>maven-javadoc-plugin</artifactId>
+       <configuration>
+         <links>
+           <link>https://jersey.java.net/apidocs/${jersey.version}/jersey/</link>
+           <link>http://shiro.apache.org/static/${shiro.version}/apidocs/</link>
+           <link>http://dropwizard.io/${dropwizard.version}/dropwizard-core/apidocs/</link>
+         </links>
+       </configuration>
+     </plugin>
+
     </plugins>
   </build>
 
@@ -276,14 +298,6 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-javadoc-plugin</artifactId>
-            <version>2.8</version>
-            <configuration>
-              <links>
-                <link>https://jersey.java.net/apidocs/2.16/jersey/</link>
-                <link>http://shiro.apache.org/static/1.2.3/apidocs/</link>
-                <link>http://dropwizard.io/0.8.0/dropwizard-core/apidocs/</link>
-              </links>
-            </configuration>
             <executions>
               <execution>
                 <id>attach-javadocs</id>
