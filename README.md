@@ -1,4 +1,4 @@
-A bundle for securing [Dropwizard](http://dropwizard.codahale.com) with [Apache Shiro](http://shiro.apache.org).
+A bundle for securing [Dropwizard](http://dropwizard.io) with [Apache Shiro](http://shiro.apache.org).
 
 # Adding the dropwizard-shiro dependency
 
@@ -8,7 +8,7 @@ Add the following dependencies to `pom.xml` in an existing project already using
 <dependency>
   <groupId>org.secnod.dropwizard</groupId>
   <artifactId>dropwizard-shiro</artifactId>
-  <version>0.2.0</version>
+  <version>0.9.0-rc1</version>
 </dependency>
 ```
 
@@ -16,6 +16,7 @@ Version compatibility:
 
 |Dropwizard|Dropwizard Shiro|
 |----------|----------------|
+|0.9.0-rc1 |0.9.0-rc1       |
 |0.8.x     |0.2.0           |
 |0.7.x     |0.1.1           |
 
@@ -35,7 +36,7 @@ public class ApiApplication extends Application<ApiConfiguration> {
     };
 
     @Override
-    public void initialize(Bootstrap<ApiConfiguration> bootstrap) {
+    public void initialize(Bootstrap<? extends Configuration> bootstrap) {
         bootstrap.addBundle(shiro);
     }
 }

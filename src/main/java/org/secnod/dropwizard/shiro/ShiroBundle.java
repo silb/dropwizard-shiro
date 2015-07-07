@@ -1,5 +1,6 @@
 package org.secnod.dropwizard.shiro;
 
+import io.dropwizard.Configuration;
 import io.dropwizard.ConfiguredBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -24,10 +25,10 @@ import org.secnod.shiro.jersey.SubjectFactory;
 /**
  * A Dropwizard bundle for Apache Shiro.
  */
-public abstract class ShiroBundle<T> implements ConfiguredBundle<T> {
+public abstract class ShiroBundle<T extends Configuration> implements ConfiguredBundle<T> {
 
     @Override
-    public void initialize(Bootstrap<?> bootstrap) {
+    public void initialize(Bootstrap<? extends T> bootstrap) {
 
     }
 
