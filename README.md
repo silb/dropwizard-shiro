@@ -137,3 +137,25 @@ environment.getApplicationContext().setSessionHandler(new SessionHandler());
 ```
 
 See the supplied [example application](src/test/java/org/secnod/dropwizard/shiro/test/integration/ApiApplication.java).
+
+# Development
+
+## Running the integration tests
+
+    mvn -Pintegration-tests test
+
+### Running the integration tests against other Dropwizard versions
+
+First, compile against the default Dropwizard version in the POM:
+
+    mvn clean compile
+
+Then run the tests by overriding the dependencies on the command line:
+
+    mvn -Pintegration-tests -Ddropwizard.version=0.8.0 -Djersey.version=2.16 surefire:test
+    mvn -Pintegration-tests -Ddropwizard.version=0.8.1 -Djersey.version=2.17 surefire:test
+    mvn -Pintegration-tests -Ddropwizard.version=0.8.2 -Djersey.version=2.19 surefire:test
+    mvn -Pintegration-tests -Ddropwizard.version=0.8.3 -Djersey.version=2.19 surefire:test
+    mvn -Pintegration-tests -Ddropwizard.version=0.8.4 -Djersey.version=2.21 surefire:test
+    mvn -Pintegration-tests -Ddropwizard.version=0.9.0 -Djersey.version=2.22.1 surefire:test
+    mvn -Pintegration-tests -Ddropwizard.version=0.9.1 -Djersey.version=2.22.1 surefire:test
