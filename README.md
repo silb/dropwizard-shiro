@@ -16,7 +16,8 @@ Version compatibility:
 
 |Dropwizard|Dropwizard Shiro|
 |----------|----------------|
-|0.9.x     |0.2.0
+|1.0.x     |0.2.0           |
+|0.9.x     |0.2.0           |
 |0.8.x     |0.2.0           |
 |0.7.x     |0.1.1           |
 
@@ -159,3 +160,7 @@ Then run the tests by overriding the dependencies on the command line:
     mvn -Pintegration-tests -Ddropwizard.version=0.8.4 -Djersey.version=2.21 surefire:test
     mvn -Pintegration-tests -Ddropwizard.version=0.9.0 -Djersey.version=2.22.1 surefire:test
     mvn -Pintegration-tests -Ddropwizard.version=0.9.1 -Djersey.version=2.22.1 surefire:test
+    mvn -Pintegration-tests -Ddropwizard.version=0.9.2 -Djersey.version=2.22.1 surefire:test
+    mvn -Pintegration-tests -Ddropwizard.version=1.0.0 -Djersey.version=2.23.1 surefire:test
+
+Note that running the integration tests against DropWizard 1.0 requires Java 8.
