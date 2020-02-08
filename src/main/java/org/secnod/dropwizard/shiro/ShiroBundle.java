@@ -17,8 +17,6 @@ import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.mgt.WebSecurityManager;
 import org.apache.shiro.web.servlet.AbstractShiroFilter;
 import org.glassfish.jersey.server.ResourceConfig;
-import org.secnod.shiro.jersey.AuthInjectionBinder;
-import org.secnod.shiro.jersey.AuthorizationFilterFeature;
 import org.secnod.shiro.jersey.SubjectFactory;
 
 /**
@@ -36,9 +34,9 @@ public abstract class ShiroBundle<T> implements ConfiguredBundle<T> {
         ShiroConfiguration shiroConfig = narrow(configuration);
         ResourceConfig resourceConfig = environment.jersey().getResourceConfig();
 
-        resourceConfig.register(new AuthorizationFilterFeature());
+        resourceConfig.register(org.apache.shiro.web.jaxrs.ShiroAnnotationFilterFeature.class);
+        resourceConfig.register(org.apache.shiro.web.jaxrs.SubjectPrincipalRequestFilter.class);
         resourceConfig.register(new SubjectFactory());
-        resourceConfig.register(new AuthInjectionBinder());
 
         Filter shiroFilter = createFilter(configuration);
         environment.servlets()

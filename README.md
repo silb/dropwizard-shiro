@@ -15,7 +15,7 @@ Add the following dependencies to `pom.xml` in an existing project already using
 Version compatibility:
 
 |Dropwizard|Dropwizard Shiro|
-|----------|----------------|
+|2.0.x     |0.3.0-SNAPSHOT  |
 |1.0.x     |0.2.0           |
 |0.9.x     |0.2.0           |
 |0.8.x     |0.2.0           |
