@@ -1,7 +1,7 @@
 package org.secnod.dropwizard.shiro.test.integration;
 import org.secnod.dropwizard.shiro.ShiroConfiguration;
 
-import io.dropwizard.Configuration;
+import io.dropwizard.core.Configuration;
 
 /**
  * An example Dropwizard configuration.
