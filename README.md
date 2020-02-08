@@ -8,14 +8,14 @@ Add the following dependencies to `pom.xml` in an existing project already using
 <dependency>
   <groupId>org.secnod.dropwizard</groupId>
   <artifactId>dropwizard-shiro</artifactId>
-  <version>0.2.0</version>
+  <version>0.3.0</version>
 </dependency>
 ```
 
 Version compatibility:
 
 |Dropwizard|Dropwizard Shiro|
-|----------|----------------|
+|3.0.x     |0.4.0-SNAPSHOT  |
 |1.0.x     |0.2.0           |
 |0.9.x     |0.2.0           |
 |0.8.x     |0.2.0           |
@@ -162,5 +162,6 @@ Then run the tests by overriding the dependencies on the command line:
     mvn -Pintegration-tests -Ddropwizard.version=0.9.1 -Djersey.version=2.22.1 surefire:test
     mvn -Pintegration-tests -Ddropwizard.version=0.9.2 -Djersey.version=2.22.1 surefire:test
     mvn -Pintegration-tests -Ddropwizard.version=1.0.0 -Djersey.version=2.23.1 surefire:test
+    mvn -Pintegration-tests -Ddropwizard.version=3.0.1 -Djersey.version=2.39.1 surefire:test
 
 Note that running the integration tests against DropWizard 1.0 requires Java 8.

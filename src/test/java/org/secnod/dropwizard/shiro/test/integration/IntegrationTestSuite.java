@@ -35,7 +35,7 @@ public class IntegrationTestSuite {
     }
 
     @ClassRule
-    public static DropwizardAppRule<ApiConfiguration> app = new DropwizardAppRule<ApiConfiguration>(
+    public static DropwizardAppRule<ApiConfiguration> app = new DropwizardAppRule<>(
             ApiApplication.class,
             "src/test/resources/api.yml",
             ConfigOverride.config("server.applicationConnectors[0].port", Integer.toString(findPort())),

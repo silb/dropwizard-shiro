@@ -1,15 +1,14 @@
 package org.secnod.dropwizard.shiro.test.integration;
 
-import org.secnod.shiro.jaxrs.ShiroExceptionMapper;
 import org.secnod.shiro.test.integration.webapp.IntegrationTestApplication;
 import org.eclipse.jetty.server.session.SessionHandler;
 import org.secnod.dropwizard.shiro.ShiroBundle;
 import org.secnod.dropwizard.shiro.ShiroConfiguration;
 import org.secnod.example.webapp.UserFactory;
 
-import io.dropwizard.Application;
-import io.dropwizard.setup.Bootstrap;
-import io.dropwizard.setup.Environment;
+import io.dropwizard.core.Application;
+import io.dropwizard.core.setup.Bootstrap;
+import io.dropwizard.core.setup.Environment;
 
 /**
  * An example Dropwizard application.
@@ -34,11 +33,15 @@ public class ApiApplication extends Application<ApiConfiguration> {
     @Override
     public void run(ApiConfiguration configuration, Environment environment) throws Exception {
         environment.jersey().register(new UserFactory());
-        environment.jersey().register(new ShiroExceptionMapper());
+        environment.jersey().register(org.apache.shiro.web.jaxrs.ExceptionMapper.class);
 
         environment.getApplicationContext().setSessionHandler(new SessionHandler());
 
         for (Object resource : IntegrationTestApplication.createAllIntegrationTestResources()) {
+            environment.jersey().register(resource);
+        }
+
+        for (Class<?> resource : IntegrationTestApplication.allIntegrationTestResourceClasses()) {
             environment.jersey().register(resource);
         }
     }
