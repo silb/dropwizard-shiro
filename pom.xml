@@ -258,8 +258,8 @@
        <configuration>
          <links>
            <link>https://jersey.java.net/apidocs/${jersey.version}/jersey/</link>
-           <link>http://shiro.apache.org/static/${shiro.version}/apidocs/</link>
-           <link>http://dropwizard.io/${dropwizard.version}/dropwizard-core/apidocs/</link>
+           <link>https://shiro.apache.org/static/${shiro.version}/apidocs/</link>
+           <link>https://javadoc.io/doc/io.dropwizard/dropwizard-project/${dropwizard.version}/</link>
          </links>
        </configuration>
      </plugin>
