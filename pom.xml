@@ -257,7 +257,7 @@
        <artifactId>maven-javadoc-plugin</artifactId>
        <configuration>
          <links>
-           <link>https://jersey.java.net/apidocs/${jersey.version}/jersey/</link>
+           <link>https://eclipse-ee4j.github.io/jersey.github.io/apidocs/${jersey.version}/jersey/</link>
            <link>https://shiro.apache.org/static/${shiro.version}/apidocs/</link>
            <link>https://javadoc.io/doc/io.dropwizard/dropwizard-project/${dropwizard.version}/</link>
          </links>
