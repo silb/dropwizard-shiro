@@ -8,8 +8,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.EnumSet;
 
-import javax.servlet.DispatcherType;
-import javax.servlet.Filter;
+import jakarta.servlet.DispatcherType;
+import jakarta.servlet.Filter;
 
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.web.env.IniWebEnvironment;
