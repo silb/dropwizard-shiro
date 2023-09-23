@@ -29,7 +29,7 @@
   <scm>
     <connection>scm:git:https://github.com/silb/dropwizard-shiro.git</connection>
     <developerConnection>scm:git:git@github.com:silb/dropwizard-shiro.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>release-0.4</tag>
     <url>https://github.com/silb/dropwizard-shiro</url>
   </scm>
 
